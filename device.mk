@@ -64,6 +64,7 @@ RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_EXTRA_LANGUAGES := true
+TW_DEFAULT_LANGUAGE := en
 TW_INCLUDE_NTFS_3G := true
 TW_USE_TOOLBOX := true
 TW_INCLUDE_RESETPROP := true
@@ -95,3 +96,7 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
 PRODUCT_COPY_FILES += \
     $(OUT_DIR)/target/product/lemonadep/system/etc/vintf/manifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/vintf/manifest.xml \
     $(OUT_DIR)/target/product/lemonadep/vendor/etc/vintf/manifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/vintf/manifest.xml
+
+
+# Inherit from the proprietary files makefile.
+$(call inherit-product, vendor/oneplus/lemonadep/lemonadep-vendor.mk)
