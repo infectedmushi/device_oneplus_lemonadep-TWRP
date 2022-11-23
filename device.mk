@@ -23,12 +23,6 @@ TARGET_SCREEN_WIDTH := 1440
 #PRODUCT_PACKAGES += \
 #    init.recovery.target.rc
 
-# Overlays
-PRODUCT_PACKAGES += \
-    OPlusFrameworksResTarget \
-    OPlusSettingsProviderResTarget \
-    OPlusSystemUIResTarget
-
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
