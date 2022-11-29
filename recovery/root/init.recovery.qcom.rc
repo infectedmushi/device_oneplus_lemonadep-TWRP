@@ -34,7 +34,7 @@ service variant-script /system/bin/variant-script.sh
     oneshot
     seclabel u:r:recovery:s0
 
-service overrideprops /system/bin/overrideprops.sh
+service change-selinux /system/bin/selinux.sh
     user root
     group root
     disabled
@@ -46,6 +46,8 @@ on init
     # Create location for fs_mgr to store abbreviated output from filesystem
     # checker programs.
     mkdir /dev/fscklogs 0770 root system
+    #setprop sys.usb.configfs 1
+    #start change-selinux
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -66,7 +68,6 @@ on fs
 on boot
     start variant-script
     setprop sys.usb.config mtp,adb
-    start overrideprops
 
 on property:twrp.modules.loaded=true
     # Load ADSP firmware for PMIC
