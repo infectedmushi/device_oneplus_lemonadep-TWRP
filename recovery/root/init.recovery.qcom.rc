@@ -34,6 +34,20 @@ service variant-script /system/bin/variant-script.sh
     oneshot
     seclabel u:r:recovery:s0
 
+service load-modules-script /system/bin/load-modules.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+service overrideprops /system/bin/set-timestamp.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
 on init
     write /sys/class/backlight/panel0-backlight/brightness 200
     # Create location for fs_mgr to store abbreviated output from filesystem
@@ -56,8 +70,13 @@ on fs
     chmod 0770 /dev/fscklogs/log
     start boot-hal-1-2
 
+#on late-fs
+#    mount ext4 /dev/block/dm-5 /vendor_dlkm ro,remount,barrier=1,discard
+#    start load-modules-script
+
 on boot
     start variant-script
+    start overrideprops
     setprop sys.usb.config mtp,adb
 
 on property:twrp.modules.loaded=true

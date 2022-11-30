@@ -1,7 +1,6 @@
 #
 # Copyright (C) 2021-2022 The LineageOS Project
 #
-# SPDX-License-Identifier: Apache-2.0
 #
 
 # AAPT
@@ -74,11 +73,14 @@ TW_EXCLUDE_APEX := true
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/msm-therm/temp"
 TW_INCLUDE_FASTBOOTD := true
 
-TW_LOAD_VENDOR_MODULES := "hdmi_dlkm.ko mt2063.ko aw8697.ko llcc_perfmon.ko mxl301rf.ko mxl5007t.ko si2157.ko mbhc_dlkm.ko pinctrl_wcd_dlkm.ko qm1d1c0042.ko fc0012.ko tua9001.ko it913x.ko hid-aksys.ko mxl5005s.ko qt1010.ko mc44s803.ko q6_pdr_dlkm.ko camera.ko m88rs6000t.ko tda18250.ko max2165.ko tuner-types.ko fc0011.ko stub_dlkm.ko rmnet_ctl.ko xc4000.ko rdbg.ko tuner-xc2028.ko msi001.ko tda18218.ko xc5000.ko tea5767.ko btpower.ko mt2131.ko e4000.ko snd_event_dlkm.ko qcom_edac.ko qca_cld3_wlan.ko tda9887.ko msm_drm.ko swr_dlkm.ko slimbus.ko tda18212.ko tea5761.ko mt2060.ko qm1d1b0004.ko wcd_core_dlkm.ko r820t.ko mt2266.ko radio-i2c-rtc6226-qca.ko fc2580.ko fc0013.ko q6_notifier_dlkm.ko swr_haptics_dlkm.ko wcd938x_slave_dlkm.ko wcd937x_slave_dlkm.ko rmnet_core.ko rmnet_offload.ko rmnet_shs.ko wsa883x_dlkm.ko apr_dlkm.ko q6_dlkm.ko tfa98xx-v6_dlkm.ko platform_dlkm.ko swr_ctrl_dlkm.ko bolero_cdc_dlkm.ko wcd9xxx_dlkm.ko wcd937x_dlkm.ko wcd938x_dlkm.ko swr_dmic_dlkm.ko tuner-simple.ko wsa_macro_dlkm.ko rx_macro_dlkm.ko slimbus-ngd.ko va_macro_dlkm.ko machine_dlkm.ko native_dlkm.ko bt_fm_slim.ko adsp_loader_dlkm.ko pinctrl_lpi_dlkm.ko tx_macro_dlkm.ko"
+#TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+
+#TW_LOAD_VENDOR_MODULES := "msm_drm.ko aw8697.ko rmnet_ctl.ko rmnet_core.ko rmnet_offload.ko rmnet_shs.ko hid-aksys.ko qcom_edac.ko"
+TW_LOAD_VENDOR_MODULES := "mt2063.ko llcc_perfmon.ko mxl301rf.ko mxl5007t.ko si2157.ko mbhc_dlkm.ko pinctrl_wcd_dlkm.ko qm1d1c0042.ko fc0012.ko tua9001.ko it913x.ko hid-aksys.ko mxl5005s.ko qt1010.ko mc44s803.ko q6_pdr_dlkm.ko m88rs6000t.ko tda18250.ko max2165.ko fc0011.ko stub_dlkm.ko rmnet_ctl.ko xc4000.ko rdbg.ko msi001.ko tda18218.ko xc5000.ko tea5767.ko mt2131.ko snd_event_dlkm.ko qcom_edac.ko tda9887.ko msm_drm.ko swr_dlkm.ko slimbus.ko tda18212.ko tea5761.ko mt2060.ko qm1d1b0004.ko wcd_core_dlkm.ko r820t.ko mt2266.ko fc2580.ko fc0013.ko q6_notifier_dlkm.ko swr_haptics_dlkm.ko wcd938x_slave_dlkm.ko wcd937x_slave_dlkm.ko rmnet_core.ko rmnet_offload.ko rmnet_shs.ko wsa883x_dlkm.ko apr_dlkm.ko q6_dlkm.ko tfa98xx-v6_dlkm.ko platform_dlkm.ko swr_ctrl_dlkm.ko bolero_cdc_dlkm.ko wcd9xxx_dlkm.ko wcd937x_dlkm.ko wcd938x_dlkm.ko swr_dmic_dlkm.ko wsa_macro_dlkm.ko rx_macro_dlkm.ko slimbus-ngd.ko va_macro_dlkm.ko machine_dlkm.ko native_dlkm.ko adsp_loader_dlkm.ko pinctrl_lpi_dlkm.ko tx_macro_dlkm.ko"
 
 #Properties
 TW_OVERRIDE_SYSTEM_PROPS := \
-    "ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.crypto.type=file"
+    "ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental"
 
 RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
