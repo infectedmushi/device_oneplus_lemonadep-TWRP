@@ -26,6 +26,7 @@
 #
 
 import /init.recovery.qcom_decrypt.rc
+#import /vendor.qti.hardware.vibrator.service.oplus.rc
 
 service variant-script /system/bin/variant-script.sh
     user root
