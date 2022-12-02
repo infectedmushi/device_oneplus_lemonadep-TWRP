@@ -73,7 +73,7 @@ TW_EXCLUDE_APEX := true
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/msm-therm/temp"
 TW_INCLUDE_FASTBOOTD := true
 
-PRODUCT_COPY_FILES += device/oneplus/lemonadep/msm_drm.ko:recovery/root/lib/modules/msm_drm.ko
+#PRODUCT_COPY_FILES += device/oneplus/lemonadep/msm_drm.ko:recovery/root/lib/modules/msm_drm.ko
 
 #TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 
