@@ -26,7 +26,7 @@
 #
 
 import /init.recovery.qcom_decrypt.rc
-#import /vendor.qti.hardware.vibrator.service.oplus.rc
+import /vendor.qti.hardware.vibrator.service.oplus.rc
 
 service variant-script /system/bin/variant-script.sh
     user root
@@ -71,13 +71,10 @@ on fs
     chmod 0770 /dev/fscklogs/log
     start boot-hal-1-2
 
-#on late-fs
-#    mount ext4 /dev/block/dm-5 /vendor_dlkm ro,remount,barrier=1,discard
-#    start load-modules-script
-
 on boot
     start variant-script
     start overrideprops
+    start vendor.qti.vibrator
     setprop sys.usb.config mtp,adb
 
 on property:twrp.modules.loaded=true
