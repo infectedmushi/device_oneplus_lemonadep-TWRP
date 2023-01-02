@@ -42,6 +42,13 @@ service overrideprops /system/bin/set-timestamp.sh
     oneshot
     seclabel u:r:recovery:s0
 
+service rmmod /system/bin/remove-mod.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
 on init
     write /sys/class/backlight/panel0-backlight/brightness 200
     # Create location for fs_mgr to store abbreviated output from filesystem
@@ -74,5 +81,6 @@ on property:twrp.modules.loaded=true
     wait /sys/kernel/boot_adsp/boot
     write /sys/kernel/boot_adsp/boot 1
     wait /sys/class/power_supply/battery
+    start rmmod
     start vendor.qti.vibrator
     start health-hal-2-1
