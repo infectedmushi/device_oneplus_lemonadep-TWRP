@@ -79,7 +79,7 @@ on boot
     exec u:r:recovery:s0 -- /system/bin/set-timestamp.sh
     #start variant-script
     #start overrideprops
-    setprop sys.usb.config mass_storage,adb
+    setprop sys.usb.config adb
 
 on property:twrp.modules.loaded=true
     # Load ADSP firmware for PMIC
