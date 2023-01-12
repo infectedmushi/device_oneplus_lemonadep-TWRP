@@ -124,6 +124,7 @@ on boot && property:vendor.usb.use_ffs_mtp=1
 on property:ro.boot.usbcontroller=*
     setprop sys.usb.controller ${ro.boot.usbcontroller}
     setprop vendor.usb.controller ${ro.boot.usbcontroller}
+    setprop sys.usb.ffs.ready 1
 
 on property:vendor.usb.controller=*
    setprop sys.usb.controller ${vendor.usb.controller}
