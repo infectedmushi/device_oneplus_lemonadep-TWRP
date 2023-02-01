@@ -19,9 +19,6 @@ PRODUCT_SOONG_NAMESPACES += \
 # Inherit from the common OEM chipset makefile.
 $(call inherit-product, device/oneplus/sm8350-common/common.mk)
 
-PRODUCT_SOONG_NAMESPACES += \
-    vendor/qcom/opensource/commonsys-intf/display
-
 PRODUCT_PACKAGES += \
     qcom_decrypt \
     qcom_decrypt_fbe
@@ -73,7 +70,8 @@ TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 
 TW_LOAD_VENDOR_MODULES := "msm_drm.ko mt2063.ko llcc_perfmon.ko mxl301rf.ko mxl5007t.ko si2157.ko mbhc_dlkm.ko pinctrl_wcd_dlkm.ko qm1d1c0042.ko fc0012.ko tua9001.ko it913x.ko hid-aksys.ko mxl5005s.ko qt1010.ko mc44s803.ko q6_pdr_dlkm.ko m88rs6000t.ko tda18250.ko max2165.ko fc0011.ko stub_dlkm.ko rmnet_ctl.ko xc4000.ko rdbg.ko msi001.ko tda18218.ko xc5000.ko tea5767.ko mt2131.ko snd_event_dlkm.ko qcom_edac.ko tda9887.ko swr_dlkm.ko slimbus.ko tda18212.ko tea5761.ko mt2060.ko qm1d1b0004.ko wcd_core_dlkm.ko r820t.ko mt2266.ko fc2580.ko fc0013.ko q6_notifier_dlkm.ko swr_haptics_dlkm.ko wcd938x_slave_dlkm.ko wcd937x_slave_dlkm.ko rmnet_core.ko rmnet_offload.ko rmnet_shs.ko wsa883x_dlkm.ko apr_dlkm.ko q6_dlkm.ko tfa98xx-v6_dlkm.ko platform_dlkm.ko swr_ctrl_dlkm.ko bolero_cdc_dlkm.ko wcd9xxx_dlkm.ko wcd937x_dlkm.ko wcd938x_dlkm.ko swr_dmic_dlkm.ko wsa_macro_dlkm.ko rx_macro_dlkm.ko slimbus-ngd.ko va_macro_dlkm.ko machine_dlkm.ko native_dlkm.ko adsp_loader_dlkm.ko pinctrl_lpi_dlkm.ko tx_macro_dlkm.ko touchscreen.ko oplus_bsp_tp_custom.ko"
 
-#aw8697.ko
+# vibration
+#TW_LOAD_VENDOR_MODULES += "aw8697.ko haptic.ko"
 
 #Properties
 TW_OVERRIDE_SYSTEM_PROPS := \
@@ -88,13 +86,9 @@ TARGET_RECOVERY_DEVICE_MODULES += libion \
     vendor.qti.hardware.vibrator.service \
     libdrm.vendor \
 
-    #android.hardware.usb.gadget@1.0-service-qti \
-
 RECOVERY_BINARY_SOURCE_FILES += \
     $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/vendor.qti.hardware.vibrator.service.oplus \
     $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/vendor.qti.hardware.vibrator.service \
-
-    #$(TARGET_OUT_VENDOR_EXECUTABLES)/hw/android.hardware.usb.gadget@1.0-service-qti
 
 RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
@@ -104,22 +98,13 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.display.config@2.0.so \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libdrm.so \
 
-    #$(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/android.hardware.usb.gadget@1.0 \
-
 #PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/excluded-input-devices.xml \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/excluded-input-devices.xml
 
-#PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*.ko,device/oneplus/sm8350-common/dist,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
-#PRODUCT_COPY_FILES += $(call find-copy-subdir-files,modules.*,device/oneplus/sm8350-common/dist,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
-
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*.ko,device/oneplus/sm8350-common/prebuilt/,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/oneplus/sm8350-common/prebuilt/modules,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
 
 
 PRODUCT_COPY_FILES += \
     $(OUT_DIR)/target/product/lemonadep/system/etc/vintf/manifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/vintf/manifest.xml \
     $(OUT_DIR)/target/product/lemonadep/vendor/etc/vintf/manifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/vintf/manifest.xml
-
-
-# Inherit from the proprietary files makefile.
-#$(call inherit-product, vendor/oneplus/lemonadep/lemonadep-vendor.mk)
