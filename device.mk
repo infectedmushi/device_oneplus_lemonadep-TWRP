@@ -113,7 +113,7 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
 #PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*.ko,device/oneplus/sm8350-common/dist,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
 #PRODUCT_COPY_FILES += $(call find-copy-subdir-files,modules.*,device/oneplus/sm8350-common/dist,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
 
-#PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/oneplus/sm8350-common/prebuilt/modules/,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*.ko,device/oneplus/sm8350-common/prebuilt/,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
 
 
 PRODUCT_COPY_FILES += \
