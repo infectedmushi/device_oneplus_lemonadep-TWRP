@@ -7,13 +7,6 @@ TW_DEVICE_VERSION := 3
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 
-# Audio
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_platform_info_intcodec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_lahaina/audio_platform_info_intcodec.xml \
-    $(LOCAL_PATH)/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_lahaina/mixer_paths.xml \
-    $(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_lahaina/sound_trigger_mixer_paths.xml \
-    $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_lahaina/sound_trigger_platform_info.xml
-
 # Boot animation
 TARGET_SCREEN_HEIGHT := 3168
 TARGET_SCREEN_WIDTH := 1440
@@ -22,11 +15,6 @@ TARGET_SCREEN_WIDTH := 1440
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
-
-PRODUCT_PACKAGES += \
-    OPlusFrameworksResTarget \
-    OPlusSettingsProviderResTarget \
-    OPlusSystemUIResTarget
 
 # Inherit from the common OEM chipset makefile.
 $(call inherit-product, device/oneplus/sm8350-common/common.mk)
@@ -124,6 +112,8 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
 
 #PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*.ko,device/oneplus/sm8350-common/dist,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
 #PRODUCT_COPY_FILES += $(call find-copy-subdir-files,modules.*,device/oneplus/sm8350-common/dist,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
+
+#PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/oneplus/sm8350-common/prebuilt/modules/,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
 
 
 PRODUCT_COPY_FILES += \
