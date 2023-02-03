@@ -2,7 +2,7 @@
 # Copyright (C) 2021-2022 The LineageOS Project
 #
 #
-TW_DEVICE_VERSION := 3
+TW_DEVICE_VERSION := 4
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
@@ -54,7 +54,7 @@ TARGET_USES_MKE2FS := true
 TW_NO_SCREEN_BLANK := true
 TW_HAS_EDL_MODE := true
 TW_EXCLUDE_APEX := true
-TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/msm-therm/temp"
+TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone92/temp"
 TW_INCLUDE_FASTBOOTD := true
 TW_EXCLUDE_TWRPAPP := true
 TW_BACKUP_EXCLUSIONS := /data/fonts/,/data/nandswap
@@ -102,8 +102,7 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/excluded-input-devices.xml \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/excluded-input-devices.xml
 
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/oneplus/sm8350-common/prebuilt/modules,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
-
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/oneplus/sm8350-common/prebuilt-$(FIRMWARE_VERSION)/modules,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
 
 PRODUCT_COPY_FILES += \
     $(OUT_DIR)/target/product/lemonadep/system/etc/vintf/manifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/vintf/manifest.xml \

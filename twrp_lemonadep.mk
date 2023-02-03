@@ -15,6 +15,8 @@ $(call inherit-product, device/oneplus/lemonadep/device.mk)
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/twrp/config/common.mk)
 
+FIRMWARE_VERSION := 12
+
 PRODUCT_NAME := twrp_lemonadep
 PRODUCT_DEVICE := lemonadep
 PRODUCT_MANUFACTURER := OnePlus
