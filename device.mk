@@ -46,8 +46,8 @@ TW_USE_TOOLBOX := true
 TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_REPACKTOOLS := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_Y_OFFSET := 95
-TW_H_OFFSET := -95
+TW_Y_OFFSET := 110
+TW_H_OFFSET := -110
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TARGET_USES_MKE2FS := true
@@ -60,12 +60,14 @@ TW_EXCLUDE_TWRPAPP := true
 TW_BACKUP_EXCLUSIONS := /data/fonts/,/data/nandswap
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 TW_HAS_MTP := true
+TW_SCREEN_BLANK_ON_BOOT := true
 
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_DEFAULT_BRIGHTNESS := 1500
 TW_MAX_BRIGHTNESS := 4095
 
 TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF := true
 #TW_NO_HAPTICS := true
 
 TW_LOAD_VENDOR_MODULES := "msm_drm.ko snd_event_dlkm.ko adsp_loader_dlkm.ko oplus_chg.ko touchscreen.ko oplus_bsp_tp_custom.ko swr_dlkm.ko swr_ctrl_dlkm.ko swr_haptics_dlkm.ko q6_dlkm.ko q6_notifier_dlkm.ko q6_pdr_dlkm.ko apr_dlkm.ko"
