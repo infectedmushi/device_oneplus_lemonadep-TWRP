@@ -67,7 +67,7 @@ TW_MAX_BRIGHTNESS := 4095
 
 TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 
-TW_LOAD_VENDOR_MODULES := "msm_drm.ko snd_event_dlkm.ko adsp_loader_dlkm.ko oplus_chg.ko touchscreen.ko oplus_bsp_tp_custom.ko swr_dlkm.ko swr_ctrl_dlkm.ko swr_haptics_dlkm.ko q6_dlkm.ko q6_notifier_dlkm.ko q6_pdr_dlkm.ko apr_dlkm.ko"
+TW_LOAD_VENDOR_MODULES := "snd_event_dlkm.ko adsp_loader_dlkm.ko oplus_chg.ko touchscreen.ko oplus_bsp_tp_custom.ko swr_dlkm.ko swr_ctrl_dlkm.ko swr_haptics_dlkm.ko q6_dlkm.ko q6_notifier_dlkm.ko q6_pdr_dlkm.ko apr_dlkm.ko"
 
 #Properties
 TW_OVERRIDE_SYSTEM_PROPS := \
@@ -95,7 +95,7 @@ PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/excluded-input-devices.xml \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/excluded-input-devices.xml
 
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/oneplus/sm8350-common/prebuilt-$(FIRMWARE_VERSION)/modules,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*.ko,device/oneplus/sm8350-common/prebuilt-$(FIRMWARE_VERSION)/modules,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules/1.1)
 
 PRODUCT_COPY_FILES += \
     $(OUT_DIR)/target/product/lemonadep/system/etc/vintf/manifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/vintf/manifest.xml \
