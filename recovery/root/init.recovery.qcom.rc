@@ -71,28 +71,12 @@ on property:twrp.modules.loaded=true
 on property:twrp.super.symlinks_created=true
     exec u:r:recovery:s0 -- /system/bin/load-mod-vib.sh
 
-    #wait /sys/class/leds/vibrator/activate 1
-    #wait /sys/class/leds/vibrator/brightness 1
-    #wait /sys/class/leds/vibrator/rtp 1
-    #wait /sys/class/leds/vibrator/vmax 1
-    #wait /sys/class/leds/vibrator/waveform_index 1
-    #wait /sys/class/leds/vibrator/state 1
-    #wait /sys/class/leds/vibrator/duration 1
-
-    #write /sys/class/leds/vibrator/activate 0
-    #write /sys/class/leds/vibrator/rtp 0
-    #write /sys/class/leds/vibrator/vmax 1600
-    #write /sys/class/leds/vibrator/waveform_index 1
-    #write /sys/class/leds/vibrator/brightness 1
-    #write /sys/class/leds/vibrator/duration 80
-    #write /sys/class/leds/vibrator/state 1
-
     chown system system /sys/class/leds/vibrator/activate
-    chown system system /sys/class/leds/vibrator/brightness
-    chown system system /sys/class/leds/vibrator/rtp
-    chown system system /sys/class/leds/vibrator/vmax
-    chown system system /sys/class/leds/vibrator/waveform_index
     chown system system /sys/class/leds/vibrator/state
     chown system system /sys/class/leds/vibrator/duration
+
+    chmod 0666 /sys/class/leds/vibrator/activate
+    chmod 0666 /sys/class/leds/vibrator/state
+    chmod 0666 /sys/class/leds/vibrator/duration
 
     start vendor.qti.vibrator
