@@ -29,13 +29,14 @@ import /init.recovery.qcom_decrypt.rc
 import /vendor.qti.hardware.vibrator.service.oplus.rc
 
 on init
-    #start load-mod
-    exec u:r:recovery:s0 -- /system/bin/load-mod.sh
-    write /sys/class/backlight/panel0-backlight/brightness 200
     # Create location for fs_mgr to store abbreviated output from filesystem
     # checker programs.
     mkdir /dev/fscklogs 0770 root system
     setprop vendor.usb.use_ffs_mtp 1
+    exec u:r:recovery:s0 -- /system/bin/load-mod.sh
+    write /sys/class/backlight/panel0-backlight/brightness 200
+    #write /proc/touchpanel/tp_fw_update 0
+    setprop custom.aw8697.loaded false
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -56,8 +57,6 @@ on fs
 on boot
     exec u:r:recovery:s0 -- /system/bin/variant-script.sh
     exec u:r:recovery:s0 -- /system/bin/set-timestamp.sh
-    #start variant-script
-    #start overrideprops
     setprop sys.usb.config adb
 
 on property:twrp.modules.loaded=true
@@ -67,16 +66,16 @@ on property:twrp.modules.loaded=true
     wait /sys/class/power_supply/battery
     start health-hal-2-1
 
-# aw8697 has to be loaded before twrp.modules.loaded=true
-on property:twrp.super.symlinks_created=true
+# aw8697 has to be loaded as fast as possible because of an 5s delay caused by firmware loading
+on property:twrp.super.symlinks_created=true && property:custom.aw8697.loaded=false
     exec u:r:recovery:s0 -- /system/bin/load-mod-vib.sh
 
+on property:custom.aw8697.loaded=true
     chown system system /sys/class/leds/vibrator/activate
     chown system system /sys/class/leds/vibrator/state
     chown system system /sys/class/leds/vibrator/duration
-
-    chmod 0666 /sys/class/leds/vibrator/activate
-    chmod 0666 /sys/class/leds/vibrator/state
-    chmod 0666 /sys/class/leds/vibrator/duration
+    chown system system /sys/class/leds/vibrator/vmax
+    chown system system /sys/class/leds/vibrator/waveform_index
+    chown system system /sys/class/leds/vibrator/rtp
 
     start vendor.qti.vibrator

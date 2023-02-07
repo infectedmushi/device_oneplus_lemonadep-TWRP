@@ -2,7 +2,7 @@
 # Copyright (C) 2021-2022 The LineageOS Project
 #
 #
-TW_DEVICE_VERSION := 4
+TW_DEVICE_VERSION := 5
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
@@ -51,7 +51,6 @@ TW_H_OFFSET := -110
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TARGET_USES_MKE2FS := true
-TW_NO_SCREEN_BLANK := true
 TW_HAS_EDL_MODE := true
 TW_EXCLUDE_APEX := true
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone92/temp"
@@ -60,6 +59,9 @@ TW_EXCLUDE_TWRPAPP := true
 TW_BACKUP_EXCLUSIONS := /data/fonts/,/data/nandswap
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 TW_HAS_MTP := true
+
+#TW_SCREEN_BLANK_ON_BOOT := true
+TW_NO_SCREEN_BLANK := true
 
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_DEFAULT_BRIGHTNESS := 1500

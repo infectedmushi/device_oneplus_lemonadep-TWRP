@@ -198,6 +198,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/msm_vidc_dec_sec     0660   system     audio
 /dev/msm_vidc_enc         0660   system     audio
 /dev/msm_rotator          0660   system     system
+/dev/hw_random            0600   root       root
 /dev/sdsprpc-smd          0660   system     system
 
 #permissions for audio
@@ -482,12 +483,3 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/devices/platform/soc/*.i2c/i2c-*/*-*/iio:device*   in_temp_raw                     0664    system  system
 /sys/devices/platform/soc/*.i2c/i2c-*/*-*/iio:device*   in_temp_scale                   0664    system  system
 /sys/devices/platform/soc/*.i2c/i2c-*/*-*/iio:device*   in_temp_scale_available         0664    system  system
-
-# vibration
-/sys/class/leds/vibrator*    activate        0666    system  system
-/sys/class/leds/vibrator*    brightness      0666    system  system
-/sys/class/leds/vibrator*    rtp             0666    system  system
-/sys/class/leds/vibrator*    vmax            0666    system  system
-/sys/class/leds/vibrator*    waveform_index  0666    system  system
-/sys/class/leds/vibrator*    state           0666    system  system
-/sys/class/leds/vibrator*    duration        0666    system  system
