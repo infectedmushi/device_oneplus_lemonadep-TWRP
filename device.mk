@@ -69,7 +69,7 @@ TW_MAX_BRIGHTNESS := 4095
 
 TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 
-TW_LOAD_VENDOR_MODULES := "snd_event_dlkm.ko adsp_loader_dlkm.ko oplus_chg.ko touchscreen.ko oplus_bsp_tp_custom.ko swr_dlkm.ko swr_ctrl_dlkm.ko swr_haptics_dlkm.ko q6_dlkm.ko q6_notifier_dlkm.ko q6_pdr_dlkm.ko apr_dlkm.ko"
+TW_LOAD_VENDOR_MODULES := "aw8697.ko adsp_loader_dlkm.ko oplus_chg.ko touchscreen.ko haptic.ko"
 
 #Properties
 TW_OVERRIDE_SYSTEM_PROPS := \

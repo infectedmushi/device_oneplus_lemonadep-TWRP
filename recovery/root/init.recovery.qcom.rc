@@ -34,13 +34,14 @@ on init
     mkdir /dev/fscklogs 0770 root system
     setprop vendor.usb.use_ffs_mtp 1
     exec u:r:recovery:s0 -- /system/bin/load-mod.sh
-    write /sys/class/backlight/panel0-backlight/brightness 200
-    #write /proc/touchpanel/tp_fw_update 0
-    setprop custom.aw8697.loaded false
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+
+    write /proc/touchpanel/tp_fw_update 0
+    write /sys/class/backlight/panel0-backlight/brightness 200
+
     # Mount firmware
     mkdir /firmware
     mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
@@ -61,16 +62,14 @@ on boot
 
 on property:twrp.modules.loaded=true
     # Load ADSP firmware for PMIC
-    wait /sys/kernel/boot_adsp/boot
+    wait /sys/kernel/boot_adsp/boot 2
     write /sys/kernel/boot_adsp/boot 1
-    wait /sys/class/power_supply/battery
+    wait /sys/class/power_supply/battery 2
     start health-hal-2-1
 
-# aw8697 has to be loaded as fast as possible because of an 5s delay caused by firmware loading
-on property:twrp.super.symlinks_created=true && property:custom.aw8697.loaded=false
-    exec u:r:recovery:s0 -- /system/bin/load-mod-vib.sh
-
-on property:custom.aw8697.loaded=true
+    wait /sys/class/leds/vibrator/ram_update 2
+    write /sys/class/leds/vibrator/ram_update 1
+    wait /sys/class/leds/vibrator/activate 2
     chown system system /sys/class/leds/vibrator/activate
     chown system system /sys/class/leds/vibrator/state
     chown system system /sys/class/leds/vibrator/duration
